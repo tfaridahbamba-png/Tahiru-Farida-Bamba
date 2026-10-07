@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+  }
+  
+  h1, h2, h3, .font-heading {
+    font-family: 'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+}
+
+/* Vibrant Colorful Mesh Animation */
+@keyframes pulseGlow {
+  0%, 100% {
+    transform: scale(1) translate(0px, 0px);
+    opacity: 0.65;
+  }
+  50% {
+    transform: scale(1.12) translate(15px, -15px);
+    opacity: 0.85;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 12s ease-in-out infinite;
+}
+
+.animate-pulse-glow-reverse {
+  animation: pulseGlow 14s ease-in-out infinite reverse;
+}
+
+/* Custom smooth scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(241, 245, 249, 0.8);
+}
+::-webkit-scrollbar-thumb {
+  background: #a5b4fc;
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #818cf8;
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Nexura Digital Skills Academy",
+  "description": "Master practical digital skills, build confidence, and turn technology into real career, business, and income opportunities.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
