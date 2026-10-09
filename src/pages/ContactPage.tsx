@@ -85,7 +85,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenWhatsApp }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           {/* Left Column: Direct channels */}
           <div className="lg:col-span-5 space-y-4">
-            <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-2xs space-y-3">
+            <div className="p-6 rounded-2xl bg-white/85 backdrop-blur-md border border-purple-200/60 shadow-md space-y-3">
               <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
                 <MessageSquare className="w-5 h-5" />
               </div>
@@ -96,13 +96,13 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenWhatsApp }) => {
               <button
                 type="button"
                 onClick={onOpenWhatsApp}
-                className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 rounded-xl transition-colors cursor-pointer"
+                className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 rounded-xl transition-colors cursor-pointer shadow-sm"
               >
                 <span>Launch WhatsApp Conversation</span>
               </button>
             </div>
 
-            <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-2xs space-y-3">
+            <div className="p-6 rounded-2xl bg-white/85 backdrop-blur-md border border-purple-200/60 shadow-md space-y-3">
               <div className="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
                 <Mail className="w-5 h-5" />
               </div>
@@ -116,7 +116,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenWhatsApp }) => {
               <p className="text-xs text-slate-500">Official inquiries replied to within 24 hours.</p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-2xs space-y-3">
+            <div className="p-6 rounded-2xl bg-white/85 backdrop-blur-md border border-purple-200/60 shadow-md space-y-3">
               <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
                 <Clock className="w-5 h-5" />
               </div>
@@ -130,7 +130,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onOpenWhatsApp }) => {
 
           {/* Right Column: Contact Form */}
           <div className="lg:col-span-7">
-            <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm">
+            <div className="bg-white/90 backdrop-blur-md rounded-3xl p-8 border border-purple-200/80 shadow-xl">
               <h3 className="text-2xl font-bold text-slate-900 mb-2">
                 Send an Admissions Message
               </h3>

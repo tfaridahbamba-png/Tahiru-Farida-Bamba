@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Project } from '../data/projectsData';
 import { ExternalLink, CheckCircle2, Clock, Sparkles, Filter, Eye, X } from 'lucide-react';
+import { AppImage } from '../components/AppImage';
 
 interface ProjectsPageProps {
   projects: Project[];
@@ -63,21 +64,17 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ projects, onStartLea
           {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className="group bg-white rounded-2xl border border-slate-200 overflow-hidden hover:border-slate-300 hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+              className="group bg-white/85 backdrop-blur-md rounded-2xl border border-purple-200/60 overflow-hidden hover:border-purple-400 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between shadow-xs"
             >
               <div>
                 {/* Featured Image Container */}
-                <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-100">
-                  <img
+                <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-950">
+                  <AppImage
                     src={project.featuredImage}
                     alt={project.title}
-                    referrerPolicy="no-referrer"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                    onError={(e) => {
-                      const target = e.currentTarget;
-                      target.src = '/src/assets/images/project_web_dashboard_1791371626846.jpg';
-                    }}
+                    containerClassName="w-full h-full"
+                    fallbackLabel={project.title}
                   />
                   {/* Category pill overlay */}
                   <div className="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-xs text-white text-[11px] font-semibold px-2.5 py-1 rounded-md">
@@ -177,12 +174,13 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ projects, onStartLea
             </button>
 
             {/* Featured Image in Modal */}
-            <div className="rounded-xl overflow-hidden aspect-[16/9] mb-5 border border-slate-200">
-              <img
+            <div className="rounded-xl overflow-hidden aspect-[16/9] mb-5 border border-slate-200 bg-slate-950">
+              <AppImage
                 src={activeProjectModal.featuredImage}
                 alt={activeProjectModal.title}
-                referrerPolicy="no-referrer"
                 className="w-full h-full object-cover"
+                containerClassName="w-full h-full"
+                fallbackLabel={activeProjectModal.title}
               />
             </div>
 

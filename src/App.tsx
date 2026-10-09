@@ -21,12 +21,12 @@ import { LegalModal } from './components/LegalModal';
 import { WhatsAppModal } from './components/WhatsAppModal';
 import { WhatsAppFloatingButton } from './components/WhatsAppFloatingButton';
 
-import { Course, COURSES_LIST } from './data/coursesData';
+import { Course } from './data/coursesData';
 import { DigitalSkill } from './data/skillsData';
 import { FreeResource } from './data/freeResourcesData';
 import { BlogPost } from './data/blogData';
 import { Project } from './data/projectsData';
-import { getStoredBlogPosts, getStoredProjects, saveRegistration } from './utils/storage';
+import { getStoredBlogPosts, getStoredProjects } from './utils/storage';
 
 export default function App() {
   // Determine initial page from URL hash
@@ -104,25 +104,24 @@ export default function App() {
     setIsResourceModalOpen(true);
   };
 
-  // When admin page is active, show the admin portal full screen or with clean chrome
+  // When admin page is active, show the vibrant admin portal
   if (currentPage === 'admin') {
     return (
-      <div className="min-h-screen bg-slate-900 text-slate-100 font-sans">
-        <AdminPage
-          onBackToSite={() => handleNavigate('home')}
-          onRefreshData={handleRefreshData}
-        />
-      </div>
+      <AdminPage
+        onBackToSite={() => handleNavigate('home')}
+        onRefreshData={handleRefreshData}
+      />
     );
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-indigo-100/90 via-purple-100/70 via-rose-100/60 to-cyan-100/70 text-slate-900 font-sans relative overflow-x-hidden">
-      {/* Ambient Vibrant Floating Mesh Orbs for Colorful Background */}
-      <div className="fixed -top-20 -left-20 w-[550px] h-[550px] bg-gradient-to-tr from-violet-500/25 via-fuchsia-400/25 to-pink-400/20 rounded-full blur-[110px] pointer-events-none -z-10 animate-pulse-glow" />
-      <div className="fixed top-1/4 -right-20 w-[520px] h-[520px] bg-gradient-to-bl from-cyan-400/30 via-sky-500/25 to-indigo-400/20 rounded-full blur-[110px] pointer-events-none -z-10 animate-pulse-glow-reverse" />
-      <div className="fixed top-2/3 -left-20 w-[480px] h-[480px] bg-gradient-to-r from-amber-300/25 via-orange-400/20 to-rose-400/25 rounded-full blur-[100px] pointer-events-none -z-10" />
-      <div className="fixed -bottom-20 right-1/4 w-[520px] h-[520px] bg-gradient-to-tl from-emerald-400/20 via-teal-400/20 to-cyan-400/25 rounded-full blur-[110px] pointer-events-none -z-10" />
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-indigo-200/40 via-purple-100/50 via-pink-100/40 via-amber-100/35 to-cyan-100/45 text-slate-900 font-sans relative overflow-x-hidden">
+      {/* Dynamic & Radiant Multi-Colour Floating Glow Orbs */}
+      <div className="fixed -top-24 -left-20 w-[600px] h-[600px] bg-gradient-to-tr from-violet-600/35 via-fuchsia-500/35 to-pink-500/25 rounded-full blur-[120px] pointer-events-none -z-10 animate-pulse-glow" />
+      <div className="fixed top-1/4 -right-24 w-[580px] h-[580px] bg-gradient-to-bl from-cyan-400/40 via-sky-500/30 to-indigo-500/30 rounded-full blur-[120px] pointer-events-none -z-10 animate-pulse-glow-reverse" />
+      <div className="fixed top-2/3 -left-24 w-[520px] h-[520px] bg-gradient-to-r from-amber-400/35 via-orange-400/30 to-rose-500/30 rounded-full blur-[110px] pointer-events-none -z-10 animate-pulse-glow" />
+      <div className="fixed -bottom-24 right-1/4 w-[560px] h-[560px] bg-gradient-to-tl from-emerald-400/30 via-teal-400/30 to-cyan-400/35 rounded-full blur-[120px] pointer-events-none -z-10 animate-pulse-glow-reverse" />
+      <div className="fixed top-1/2 left-1/3 w-[450px] h-[450px] bg-gradient-to-r from-pink-400/25 via-purple-400/25 to-blue-400/25 rounded-full blur-[100px] pointer-events-none -z-10" />
 
       {/* Universal Header with Farida BLoG Logo and Multi-page navigation */}
       <Header
@@ -227,7 +226,7 @@ export default function App() {
         skill={selectedSkill}
         isOpen={isSkillDetailOpen}
         onClose={() => setIsSkillDetailOpen(false)}
-        onExploreCourse={(skillId) => {
+        onExploreCourse={() => {
           setIsSkillDetailOpen(false);
           handleNavigate('skills');
         }}

@@ -1,5 +1,7 @@
 import React from 'react';
 import { Award, Heart, CheckCircle2, MessageCircle, Calendar, Sparkles } from 'lucide-react';
+import { APP_IMAGES } from '../utils/images';
+import { AppImage } from './AppImage';
 
 interface AboutSectionProps {
   onOpenConsultation: () => void;
@@ -11,27 +13,22 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
   onOpenWhatsApp,
 }) => {
   return (
-    <section id="about" className="py-16 md:py-24 bg-gradient-to-r from-purple-50/70 via-indigo-50/70 to-pink-50/70 backdrop-blur-md border-t border-purple-100/60">
+    <section id="about" className="py-16 md:py-24 bg-gradient-to-r from-purple-100/60 via-indigo-100/60 via-pink-100/50 to-amber-100/50 backdrop-blur-md border-t border-purple-200/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column: Instructor Portrait & Trust Credentials */}
           <div className="lg:col-span-5">
             <div className="relative max-w-md mx-auto">
-              <div className="relative rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-lg">
-                <img
-                  src="/src/assets/images/instructor_portrait_1791370279802.jpg"
-                  alt="Farida Bamba, Digital Skills Mentor and Educator"
-                  referrerPolicy="no-referrer"
-                  className="w-full h-auto object-cover aspect-square"
-                  loading="lazy"
-                  onError={(e) => {
-                    const target = e.currentTarget;
-                    target.style.display = 'none';
-                    if (target.parentElement) {
-                      target.parentElement.classList.add('bg-indigo-900', 'p-8', 'text-white', 'min-h-[380px]', 'flex', 'flex-col', 'justify-center', 'items-center');
-                    }
-                  }}
-                />
+              <div className="relative rounded-3xl overflow-hidden border-2 border-purple-200/80 bg-white/90 shadow-2xl shadow-purple-500/20">
+                <div className="relative aspect-square w-full overflow-hidden bg-slate-950">
+                  <AppImage
+                    src={APP_IMAGES.instructor}
+                    alt="Farida Bamba, Digital Skills Mentor and Educator"
+                    className="w-full h-full object-cover"
+                    containerClassName="w-full h-full"
+                    fallbackLabel="Farida Bamba · Digital Skills Mentor"
+                  />
+                </div>
 
                 {/* Caption Tag */}
                 <div className="p-4 bg-white border-t border-slate-100 flex items-center justify-between">

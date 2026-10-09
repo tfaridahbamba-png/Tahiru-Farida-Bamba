@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Star, Quote, CheckCircle2, ChevronRight, Award } from 'lucide-react';
 import { TESTIMONIALS_LIST } from '../data/testimonialsData';
+import { APP_IMAGES } from '../utils/images';
+import { AppImage } from './AppImage';
 
 export const TestimonialsSection: React.FC = () => {
   const [selectedStudent, setSelectedStudent] = useState<number>(0);
@@ -75,18 +77,16 @@ export const TestimonialsSection: React.FC = () => {
           </div>
 
           {/* Right Column: Graduation Community Asset */}
-          <div className="lg:col-span-5 relative rounded-2xl overflow-hidden border border-slate-200 shadow-sm flex flex-col">
-            <img
-              src="/src/assets/images/community_success_1791370299617.jpg"
-              alt="Nexura Digital Skills Academy graduates holding certificates"
-              referrerPolicy="no-referrer"
-              className="w-full h-full object-cover min-h-[280px]"
-              loading="lazy"
-              onError={(e) => {
-                const target = e.currentTarget;
-                target.style.display = 'none';
-              }}
-            />
+          <div className="lg:col-span-5 relative rounded-3xl overflow-hidden border-2 border-indigo-200/80 shadow-xl flex flex-col bg-slate-950">
+            <div className="relative w-full h-full min-h-[280px]">
+              <AppImage
+                src={APP_IMAGES.community}
+                alt="Digital Skills Academy graduates holding certificates"
+                className="w-full h-full object-cover min-h-[280px]"
+                containerClassName="w-full h-full min-h-[280px]"
+                fallbackLabel="Alumni Graduation & Certificate Network"
+              />
+            </div>
             <div className="p-4 bg-white/95 backdrop-blur-xs border-t border-slate-200">
               <div className="flex items-center gap-2 text-xs font-bold text-slate-900 mb-0.5">
                 <Award className="w-4 h-4 text-indigo-600" />

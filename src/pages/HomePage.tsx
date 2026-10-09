@@ -14,6 +14,7 @@ import { DigitalSkill, SKILLS_LIST } from '../data/skillsData';
 import { FreeResource } from '../data/freeResourcesData';
 
 import { ArrowRight, Sparkles, ExternalLink, Clock, CheckCircle2, BookOpen } from 'lucide-react';
+import { AppImage } from '../components/AppImage';
 
 interface HomePageProps {
   onNavigate: (page: string) => void;
@@ -77,12 +78,13 @@ export const HomePage: React.FC<HomePageProps> = ({
                 className="group bg-white/90 backdrop-blur-xs hover:bg-white rounded-2xl border border-purple-100 hover:border-purple-300 hover:shadow-xl transition-all duration-200 overflow-hidden cursor-pointer flex flex-col justify-between shadow-xs"
               >
                 <div>
-                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">
-                    <img
+                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-950">
+                    <AppImage
                       src={proj.featuredImage}
                       alt={proj.title}
-                      referrerPolicy="no-referrer"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      containerClassName="w-full h-full"
+                      fallbackLabel={proj.title}
                     />
                     <div className="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-xs text-white text-[10px] font-bold px-2.5 py-1 rounded">
                       {proj.category}
@@ -145,14 +147,15 @@ export const HomePage: React.FC<HomePageProps> = ({
                 className="group bg-white/95 backdrop-blur-xs rounded-2xl border border-purple-100 overflow-hidden hover:border-purple-300 hover:shadow-xl transition-all duration-200 cursor-pointer flex flex-col justify-between shadow-xs"
               >
                 <div>
-                  <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-100">
-                    <img
+                  <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-950">
+                    <AppImage
                       src={post.featuredImage}
                       alt={post.title}
-                      referrerPolicy="no-referrer"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      containerClassName="w-full h-full"
+                      fallbackLabel={post.title}
                     />
-                    <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-xs text-slate-900 text-[10px] font-bold px-2 py-0.5 rounded">
+                    <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-xs text-slate-900 text-[10px] font-bold px-2 py-0.5 rounded shadow-xs">
                       {post.category}
                     </div>
                   </div>

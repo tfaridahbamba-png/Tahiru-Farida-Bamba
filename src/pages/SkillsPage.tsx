@@ -133,7 +133,7 @@ export const SkillsPage: React.FC<SkillsPageProps> = ({ onSelectSkill, onEnrollC
           {filteredSkills.map((skill) => (
             <div
               key={skill.id}
-              className="group bg-white rounded-2xl p-6 border border-slate-200 hover:border-indigo-300 hover:shadow-lg transition-all duration-200 flex flex-col justify-between"
+              className="group bg-white/85 backdrop-blur-md rounded-2xl p-6 border border-purple-200/60 hover:border-indigo-400 hover:shadow-xl transition-all duration-200 flex flex-col justify-between shadow-xs"
             >
               <div>
                 <div className="flex items-start justify-between mb-4">

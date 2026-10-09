@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BlogPost } from '../data/blogData';
 import { Search, Clock, Calendar, ArrowRight, BookOpen, Share2, Sparkles, X, CheckCircle2 } from 'lucide-react';
+import { AppImage } from '../components/AppImage';
 
 interface BlogPageProps {
   posts: BlogPost[];
@@ -54,22 +55,19 @@ export const BlogPage: React.FC<BlogPageProps> = ({ posts }) => {
 
         {/* Featured Post Spotlight (if on 'All' and no search) */}
         {selectedCategory === 'All' && !searchQuery && featuredPost && (
-          <div className="mb-14 bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+          <div className="mb-14 bg-white/90 backdrop-blur-md rounded-3xl border border-purple-200/80 overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300">
             <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
               {/* Featured Image */}
-              <div className="lg:col-span-7 relative aspect-[16/10] lg:aspect-auto lg:h-full bg-slate-100 overflow-hidden">
-                <img
+              <div className="lg:col-span-7 relative aspect-[16/10] lg:aspect-auto lg:h-full bg-slate-950 overflow-hidden">
+                <AppImage
                   src={featuredPost.featuredImage}
                   alt={featuredPost.title}
-                  referrerPolicy="no-referrer"
                   className="w-full h-full object-cover"
+                  containerClassName="w-full h-full"
                   loading="eager"
-                  onError={(e) => {
-                    const target = e.currentTarget;
-                    target.src = '/src/assets/images/hero_digital_skills_1791370266919.jpg';
-                  }}
+                  fallbackLabel={featuredPost.title}
                 />
-                <div className="absolute top-4 left-4 bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                <div className="absolute top-4 left-4 bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">
                   Featured Story
                 </div>
               </div>
@@ -157,21 +155,17 @@ export const BlogPage: React.FC<BlogPageProps> = ({ posts }) => {
           {filteredPosts.map((post) => (
             <article
               key={post.id}
-              className="group bg-white rounded-2xl border border-slate-200 overflow-hidden hover:border-slate-300 hover:shadow-lg transition-all duration-200 flex flex-col justify-between"
+              className="group bg-white/85 backdrop-blur-md rounded-2xl border border-purple-200/60 overflow-hidden hover:border-purple-400 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between shadow-xs"
             >
               <div>
                 {/* Prominent Featured Image */}
-                <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-100">
-                  <img
+                <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-950">
+                  <AppImage
                     src={post.featuredImage}
                     alt={post.title}
-                    referrerPolicy="no-referrer"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    loading="lazy"
-                    onError={(e) => {
-                      const target = e.currentTarget;
-                      target.src = '/src/assets/images/hero_digital_skills_1791370266919.jpg';
-                    }}
+                    containerClassName="w-full h-full"
+                    fallbackLabel={post.title}
                   />
                   <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-xs text-slate-900 text-[11px] font-semibold px-2.5 py-1 rounded-md shadow-2xs">
                     {post.category}
@@ -275,12 +269,13 @@ export const BlogPage: React.FC<BlogPageProps> = ({ posts }) => {
             </button>
 
             {/* Featured Image inside Article */}
-            <div className="rounded-2xl overflow-hidden aspect-[16/9] mb-6 border border-slate-200">
-              <img
+            <div className="rounded-2xl overflow-hidden aspect-[16/9] mb-6 border border-slate-200 bg-slate-950">
+              <AppImage
                 src={activePost.featuredImage}
                 alt={activePost.title}
-                referrerPolicy="no-referrer"
                 className="w-full h-full object-cover"
+                containerClassName="w-full h-full"
+                fallbackLabel={activePost.title}
               />
             </div>
 

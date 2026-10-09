@@ -1,5 +1,7 @@
 import React from 'react';
 import { Award, Heart, CheckCircle2, MessageCircle, Calendar, Sparkles, BookOpen, Users, Compass, Globe } from 'lucide-react';
+import { APP_IMAGES } from '../utils/images';
+import { AppImage } from '../components/AppImage';
 
 interface AboutPageProps {
   onOpenConsultation: () => void;
@@ -19,13 +21,16 @@ export const AboutPage: React.FC<AboutPageProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center mb-16">
           <div className="lg:col-span-5">
             <div className="relative max-w-md mx-auto">
-              <div className="rounded-3xl overflow-hidden border border-slate-200 bg-white shadow-xl">
-                <img
-                  src="/src/assets/images/instructor_portrait_1791370279802.jpg"
-                  alt="Farida Bamba, Digital Skills Mentor & Author of Farida BLoG"
-                  referrerPolicy="no-referrer"
-                  className="w-full h-auto object-cover aspect-square"
-                />
+              <div className="rounded-3xl overflow-hidden border-2 border-purple-200/80 bg-white/90 shadow-2xl shadow-purple-500/20">
+                <div className="relative aspect-square w-full overflow-hidden bg-slate-950">
+                  <AppImage
+                    src={APP_IMAGES.instructor}
+                    alt="Farida Bamba, Digital Skills Mentor & Author of Farida BLoG"
+                    className="w-full h-full object-cover"
+                    containerClassName="w-full h-full"
+                    fallbackLabel="Farida Bamba · Digital Skills Mentor"
+                  />
+                </div>
                 <div className="p-5 bg-white border-t border-slate-100 flex items-center justify-between">
                   <div>
                     <h3 className="text-base font-bold text-slate-900">Farida Bamba</h3>

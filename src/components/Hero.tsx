@@ -1,5 +1,7 @@
 import React from 'react';
 import { ArrowRight, Compass, CheckCircle2, Star, Sparkles, Users, Award, BookOpen } from 'lucide-react';
+import { APP_IMAGES } from '../utils/images';
+import { AppImage } from './AppImage';
 
 interface HeroProps {
   onStartLearning: () => void;
@@ -88,26 +90,21 @@ export const Hero: React.FC<HeroProps> = ({
               {/* Decorative subtle backdrop halo */}
               <div className="absolute -inset-2 bg-gradient-to-tr from-indigo-500/20 to-blue-500/20 rounded-2xl blur-xl opacity-70 -z-10" />
 
-              {/* Main Image Frame */}
-              <div className="relative rounded-2xl overflow-hidden border border-slate-200/80 bg-white shadow-xl">
-                <img
-                  src="/src/assets/images/hero_digital_skills_1791370266919.jpg"
-                  alt="Digital skills educator mentoring students hands-on with laptops"
-                  referrerPolicy="no-referrer"
-                  className="w-full h-auto object-cover aspect-[4/3] sm:aspect-[16/10]"
-                  loading="eager"
-                  onError={(e) => {
-                    // Fallback container if local asset failed
-                    const target = e.currentTarget;
-                    target.style.display = 'none';
-                    if (target.parentElement) {
-                      target.parentElement.classList.add('bg-gradient-to-br', 'from-indigo-900', 'to-slate-900', 'p-8', 'text-white', 'min-h-[340px]', 'flex', 'flex-col', 'justify-center');
-                    }
-                  }}
-                />
+              {/* Main Image Frame with Glowing Colorful Border */}
+              <div className="relative rounded-3xl overflow-hidden border-2 border-indigo-200/80 bg-white/90 shadow-2xl shadow-indigo-500/20">
+                <div className="relative aspect-[4/3] sm:aspect-[16/10] w-full overflow-hidden bg-slate-950">
+                  <AppImage
+                    src={APP_IMAGES.hero}
+                    alt="Digital skills educator mentoring students hands-on with laptops"
+                    className="w-full h-full object-cover"
+                    containerClassName="w-full h-full"
+                    loading="eager"
+                    fallbackLabel="Interactive Workshop & Tech Mentorship"
+                  />
+                </div>
 
                 {/* Bottom Media Card Caption with Quantitative Proof */}
-                <div className="p-4 bg-white/95 backdrop-blur-xs border-t border-slate-100 flex items-center justify-between">
+                <div className="p-4 bg-white/95 backdrop-blur-xs border-t border-indigo-100 flex items-center justify-between">
                   <div>
                     <p className="text-xs font-semibold text-slate-900">Hands-on Lab Mentorship</p>
                     <p className="text-xs text-slate-500">Live exercises & step-by-step guidance</p>

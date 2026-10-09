@@ -1,10 +1,11 @@
 import { BlogPost, INITIAL_BLOG_POSTS } from '../data/blogData';
 import { Project, INITIAL_PROJECTS } from '../data/projectsData';
+import { resolveImageUrl } from './images';
 
-const BLOG_KEY = 'farida_blog_posts_v1';
-const PROJECTS_KEY = 'farida_projects_v1';
-const INQUIRIES_KEY = 'farida_inquiries_v1';
-const REGISTRATIONS_KEY = 'farida_registrations_v1';
+const BLOG_KEY = 'farida_blog_posts_v2';
+const PROJECTS_KEY = 'farida_projects_v2';
+const INQUIRIES_KEY = 'farida_inquiries_v2';
+const REGISTRATIONS_KEY = 'farida_registrations_v2';
 
 export interface InboundInquiry {
   id: string;
@@ -30,15 +31,26 @@ export interface StudentRegistration {
   date: string;
 }
 
-// Blog storage methods
+// Blog storage methods with automatic image resolution
 export const getStoredBlogPosts = (): BlogPost[] => {
   try {
     const raw = localStorage.getItem(BLOG_KEY);
+    let list: BlogPost[];
     if (!raw) {
-      localStorage.setItem(BLOG_KEY, JSON.stringify(INITIAL_BLOG_POSTS));
-      return INITIAL_BLOG_POSTS;
+      list = INITIAL_BLOG_POSTS;
+      localStorage.setItem(BLOG_KEY, JSON.stringify(list));
+    } else {
+      list = JSON.parse(raw);
     }
-    return JSON.parse(raw);
+    // Sanitize image paths
+    return list.map((post) => ({
+      ...post,
+      featuredImage: resolveImageUrl(post.featuredImage),
+      author: {
+        ...post.author,
+        avatar: resolveImageUrl(post.author?.avatar),
+      },
+    }));
   } catch {
     return INITIAL_BLOG_POSTS;
   }
@@ -46,13 +58,21 @@ export const getStoredBlogPosts = (): BlogPost[] => {
 
 export const saveBlogPost = (post: BlogPost): BlogPost[] => {
   const current = getStoredBlogPosts();
-  const existingIndex = current.findIndex((p) => p.id === post.id);
+  const sanitizedPost: BlogPost = {
+    ...post,
+    featuredImage: resolveImageUrl(post.featuredImage),
+    author: {
+      ...post.author,
+      avatar: resolveImageUrl(post.author?.avatar),
+    },
+  };
+  const existingIndex = current.findIndex((p) => p.id === sanitizedPost.id);
   let updated: BlogPost[];
   if (existingIndex >= 0) {
     updated = [...current];
-    updated[existingIndex] = post;
+    updated[existingIndex] = sanitizedPost;
   } else {
-    updated = [post, ...current];
+    updated = [sanitizedPost, ...current];
   }
   localStorage.setItem(BLOG_KEY, JSON.stringify(updated));
   return updated;
@@ -65,15 +85,22 @@ export const deleteBlogPost = (id: string): BlogPost[] => {
   return updated;
 };
 
-// Projects storage methods
+// Projects storage methods with automatic image resolution
 export const getStoredProjects = (): Project[] => {
   try {
     const raw = localStorage.getItem(PROJECTS_KEY);
+    let list: Project[];
     if (!raw) {
-      localStorage.setItem(PROJECTS_KEY, JSON.stringify(INITIAL_PROJECTS));
-      return INITIAL_PROJECTS;
+      list = INITIAL_PROJECTS;
+      localStorage.setItem(PROJECTS_KEY, JSON.stringify(list));
+    } else {
+      list = JSON.parse(raw);
     }
-    return JSON.parse(raw);
+    // Sanitize image paths
+    return list.map((proj) => ({
+      ...proj,
+      featuredImage: resolveImageUrl(proj.featuredImage),
+    }));
   } catch {
     return INITIAL_PROJECTS;
   }
@@ -81,13 +108,17 @@ export const getStoredProjects = (): Project[] => {
 
 export const saveProject = (proj: Project): Project[] => {
   const current = getStoredProjects();
-  const existingIndex = current.findIndex((p) => p.id === proj.id);
+  const sanitizedProj: Project = {
+    ...proj,
+    featuredImage: resolveImageUrl(proj.featuredImage),
+  };
+  const existingIndex = current.findIndex((p) => p.id === sanitizedProj.id);
   let updated: Project[];
   if (existingIndex >= 0) {
     updated = [...current];
-    updated[existingIndex] = proj;
+    updated[existingIndex] = sanitizedProj;
   } else {
-    updated = [proj, ...current];
+    updated = [sanitizedProj, ...current];
   }
   localStorage.setItem(PROJECTS_KEY, JSON.stringify(updated));
   return updated;

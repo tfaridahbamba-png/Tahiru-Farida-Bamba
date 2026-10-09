@@ -1,3 +1,5 @@
+import { APP_IMAGES } from '../utils/images';
+
 export interface BlogPost {
   id: string;
   title: string;
@@ -48,11 +50,11 @@ Once you have tangible proof, finding clients or passing job interviews becomes 
     author: {
       name: 'Farida Bamba',
       role: 'Digital Skills Educator & Tech Mentor',
-      avatar: '/src/assets/images/instructor_portrait_1791370279802.jpg'
+      avatar: APP_IMAGES.instructor,
     },
     date: 'Oct 04, 2026',
     readTime: '5 min read',
-    featuredImage: '/src/assets/images/blog_digital_career_1791371603288.jpg',
+    featuredImage: APP_IMAGES.blogCareer,
     tags: ['Career Growth', 'Digital Skills', 'Beginner Blueprint', 'Tech Jobs'],
     featured: true,
   },
@@ -79,11 +81,11 @@ Save these templates in your notes and watch your weekly office workload shrink 
     author: {
       name: 'Farida Bamba',
       role: 'Digital Skills Educator & Tech Mentor',
-      avatar: '/src/assets/images/instructor_portrait_1791370279802.jpg'
+      avatar: APP_IMAGES.instructor,
     },
     date: 'Sep 28, 2026',
     readTime: '4 min read',
-    featuredImage: '/src/assets/images/hero_digital_skills_1791370266919.jpg',
+    featuredImage: APP_IMAGES.hero,
     tags: ['AI Productivity', 'ChatGPT', 'Prompt Engineering', 'Automation'],
     featured: false,
   },
@@ -105,11 +107,11 @@ Within 21 days, she signed her first $650/month contract, working from home on a
     author: {
       name: 'Farida Bamba',
       role: 'Digital Skills Educator & Tech Mentor',
-      avatar: '/src/assets/images/instructor_portrait_1791370279802.jpg'
+      avatar: APP_IMAGES.instructor,
     },
     date: 'Sep 15, 2026',
     readTime: '6 min read',
-    featuredImage: '/src/assets/images/community_success_1791370299617.jpg',
+    featuredImage: APP_IMAGES.community,
     tags: ['Freelancing', 'Upwork', 'Remote Work', 'Student Story'],
     featured: false,
   },
@@ -132,11 +134,11 @@ For beginners who need to build confidence and generate income quickly, No-Code 
     author: {
       name: 'Farida Bamba',
       role: 'Digital Skills Educator & Tech Mentor',
-      avatar: '/src/assets/images/instructor_portrait_1791370279802.jpg'
+      avatar: APP_IMAGES.instructor,
     },
     date: 'Aug 30, 2026',
     readTime: '5 min read',
-    featuredImage: '/src/assets/images/project_modern_ecommerce_1791371614219.jpg',
+    featuredImage: APP_IMAGES.ecommerce,
     tags: ['Web Design', 'No-Code', 'WordPress', 'Career Advice'],
     featured: false,
   }
